@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
     res.redirect(301, "https://polish-penguin-dev.github.io/MC-SRV-DL-API/");
 });
 
+app.get("/status", (req, res) => {
+    res.status(200).json({ online: true, sources });
+});
+
 app.get("/download/:software/:version/:build?", (req, res) => {
     const { software, version, build } = req.params;
 
