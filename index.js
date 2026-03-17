@@ -28,35 +28,39 @@ app.get("/status", (req, res) => {
     res.status(200).json({ online: true, sources });
 });
 
-app.get("/download/:software/:version/:build?", (req, res) => {
+app.get("/download/:software/:version/:build?", async (req, res) => {
     const { software, version, build } = req.params;
 
     if(!sources.includes(software)) return res.status(400).json({ error: true, msg: "Invalid Software Type!" });
     if(!build && software !== "vanilla" && software !== "fabric") return res.status(400).json({ error: true, msg: "Include Build!" });
     if(!build && software === "fabric") return res.status(400).json({ error: true, msg: "Include Loader Version!" });
 
-    switch(software) {
-        case "vanilla":
-            vanilla(version, res);
-            break;
-        case "paper":
-            paper(version, build, res);
-            break;
-        case "purpur":
-            purpur(version, build, res);
-            break;
-        case "folia":
-            folia(version, build, res);
-            break;
-        case "velocity":
-            velocity(version, build, res);
-            break;
-        case "sponge":
-            sponge(version, build, res);
-            break;
-        case "fabric":
-            fabric(version, build, req.query.installer ? req.query.installer : false, res);
-            break;
+    try {
+        switch(software) {
+            case "vanilla":
+                await vanilla(version, res);
+                break;
+            case "paper":
+                await paper(version, build, res);
+                break;
+            case "purpur":
+                await purpur(version, build, res);
+                break;
+            case "folia":
+                await folia(version, build, res);
+                break;
+            case "velocity":
+                await velocity(version, build, res);
+                break;
+            case "sponge":
+                await sponge(version, build, res);
+                break;
+            case "fabric":
+                await fabric(version, build, req.query.installer || false, res);
+                break;
+        }
+    } catch(e) {
+        if(!res.headersSent) res.status(500).json({ error: true, msg: "Internal Server Error!" });
     }
 });
 
