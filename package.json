@@ -1,7 +1,7 @@
 {
   "name": "mc-srv-dl-api",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.118",
   "description": "Download Minecraft Server Software With Ease!",
   "main": "index.js",
   "scripts": {
