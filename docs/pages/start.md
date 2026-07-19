@@ -1,3 +1,11 @@
+## Status
+
+`(GET) /status`
+
+Returns `{ "online": true, "sources": [...] }` with HTTP 200. Use this to check if the API is up and see all supported software types.
+
+## Download
+
 Here is the basic format for downloading a JAR:
 
 `(GET) /download/[software]/[version]/[build]`

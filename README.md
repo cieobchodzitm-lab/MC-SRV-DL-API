@@ -22,6 +22,12 @@ To suggest new softwares, please open an issue.
 
 ## Usage
 
+### Status
+
+`GET /status` — returns `{ "online": true, "sources": [...] }` with HTTP 200. Use this to check if the API is running.
+
+### Download
+
 Format: `/download/{SOFTWARE}/{VERSION}/{BUILD}`.
 
 Note: `{VERSION}` and `{BUILD}` values can be `'latest'`. All of the parameters are required, except for `{BUILD}` when using Vanilla.

@@ -42,6 +42,10 @@ This is a HTTP 400 error (bad request). The installer version for fabric softwar
 
 This is a HTTP 400 error (bad request). The fabric meta API only allows you to use minimum version 0.8.0 for the fabric installer on 'unattended server installs'.
 
+**Internal Server Error!**
+
+This is a HTTP 500 error (internal server error). This usually means there was an unexpected issue fetching data from an upstream API (e.g. PaperMC, Mojang, FabricMC). Try again in a few moments. If the issue persists, the upstream service may be down.
+
 Common mistakes:
 
 - All is CaSE SeNsITIve! Make sure the strings you have inputted are in the correct case.
